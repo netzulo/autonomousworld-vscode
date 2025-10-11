@@ -1,0 +1,23 @@
+services:
+  ephemereal-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aw-dev-node
+    ports:
+      - "${VSCODE_PORT:-8443}:${VSCODE_PORT:-8443}"
+    environment:
+      LANGUAGES: "${LANGUAGES}"
+      NODE_VERSION: "${NODE_VERSION}"
+      ASDF_VERSION: "${ASDF_VERSION}"
+      PYTHON_VERSION: "${PYTHON_VERSION}"
+      JAVA_VERSION: "${JAVA_VERSION}"
+      VSCODE_DIR: "${VSCODE_DIR}"
+      VSCODE_PORT: "${VSCODE_PORT}"
+      VSCODE_PASSWORD: "${VSCODE_PASSWORD}"
+      OPENAI_API_KEY: "${OPENAI_API_KEY}"
+      OPENAI_MODEL: "${OPENAI_MODEL}"
+      GITLAB_PERSONAL_ACCESS_TOKEN: "${GITLAB_PERSONAL_ACCESS_TOKEN}"
+    volumes:
+      - ./src/workspace:/workspace
+    tty: true

@@ -1,0 +1,18 @@
+{
+  // === OpenAI (extensión ChatGPT) ===
+  "openai.apiKey": "${env:OPENAI_API_KEY}",
+  "openai.model": "${env:OPENAI_MODEL}",
+
+  // === Editor ===
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.suggest.showWords": true,
+  "files.autoSave": "off",
+
+  // Avoid trust prompts in ephemeral containers
+  "security.workspace.trust.enabled": false
+}

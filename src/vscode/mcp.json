@@ -1,0 +1,64 @@
+{
+	"servers": {
+		"memory": {
+    	  "command": "npx",
+    	  "args": [
+    	    "-y",
+    	    "@modelcontextprotocol/server-memory"
+    	  ],
+		  "envFile": "${input:envFile}"
+    	},
+		"sequential-thinking": {
+    	  "command": "npx",
+    	  "args": [
+    	    "-y",
+    	    "@modelcontextprotocol/server-sequential-thinking"
+    	  ],
+		  "envFile": "${input:envFile}"
+    	},
+		"filesystem": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-filesystem@2025.8.21",
+				"/workspace"
+			],
+			"envFile": "${input:envFile}",
+			"type": "stdio"
+		},
+		"git": {
+			"command": "python",
+			"args": [
+				"-m",
+				"mcp_server_git",
+				"--repository",
+				"/workspace"
+			]
+  		},
+		"gitlab": {
+    		"command": "npx",
+    		"args": [
+    		  "-y",
+    		  "@modelcontextprotocol/server-gitlab"
+    		],
+			"envFile": "${input:envFile}",
+    		"type": "stdio"
+    	},
+		"pdf-action-inspector": {
+    		"command": "pdf-action-inspector",
+    		"type": "stdio"
+    	}
+	},
+	"inputs": [
+		{
+			"id": "allowed_dirs",
+			"type": "promptString",
+			"description": "Allowed directories for MCP Filesystem server"
+		},
+		{
+			"id": "envFile",
+			"type": "promptString",
+			"description": "Path to environment file (optional)"
+		}
+	]
+}
