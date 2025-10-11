@@ -1,0 +1,63 @@
+# Pull Request
+
+> Use a clear, conventional title (e.g., `feat: add GHCR publish`, `fix: mcp json path`).
+
+## Summary
+Describe the change in 1–3 sentences.
+
+## Type of change
+- [ ] feat (new feature)
+- [ ] fix (bug fix)
+- [ ] docs (documentation only)
+- [ ] refactor (no functional change)
+- [ ] chore (build/CI/deps)
+- [ ] perf (performance)
+- [ ] style (formatting)
+
+## Related issues / links
+Closes #<issue-id>  
+Refs #<issue-id>  
+Link to design/ADR/spec if relevant.
+
+## How it was tested
+- [ ] Local: `docker compose build` / `docker run` OK
+- [ ] Image works on: `linux/amd64`  `linux/arm64`
+- [ ] Manual scenario tested: <describe>
+- [ ] Unit / script tests (if any)
+
+### Commands / logs (optional)
+```sh
+# Example
+docker build -t local/aw-vscode:test .
+docker run --rm -p 8443:8443 local/aw-vscode:test
+```
+
+## Screenshots / recordings (optional)
+<!-- Add UI screenshots or terminal GIFs if useful -->
+
+## Breaking changes
+- [ ] None
+- [ ] Yes — describe impact and migration steps:
+  - Migration: <steps>
+
+## Security considerations
+- [ ] No secrets added
+- [ ] Handled tokens via env/`envFile` (not hardcoded)
+- [ ] Updated base image / patched CVEs (if applicable)
+- [ ] Reviewed SBOM / Trivy output (if applicable)
+
+## Documentation
+- [ ] README updated
+- [ ] Example `.env.example` updated
+- [ ] CI/CD docs updated
+- [ ] Added/updated CHANGELOG entry (or covered by Release Please)
+
+## Checklist
+- [ ] Conventional commit title
+- [ ] CI passes (lint/build/tests)
+- [ ] Labels added (bug/enhancement/etc.)
+- [ ] Codeowners/Reviewers requested
+- [ ] No dead code / commented leftovers
+
+## Release notes (user-facing)
+<!-- One-liner for the changelog / GitHub Release body -->
