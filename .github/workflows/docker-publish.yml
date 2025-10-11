@@ -4,13 +4,13 @@ on:
   push:
     branches: [ main ]
     tags:
-      - 'v*.*.*'   # cuando etiquetes versiones
+      - 'v*.*.*'   # when tagging versions
   workflow_dispatch:
 
 permissions:
   contents: read
   packages: write
-  id-token: write # para provenance
+  id-token: write # for provenance
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
@@ -36,20 +36,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # (Opcional) Login a Docker Hub
-      # - name: Login to DockerHub
-      #   uses: docker/login-action@v3
-      #   with:
-      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
-
       - name: Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
+          # Define the repository name dynamically for GHCR
           images: |
             ghcr.io/${{ github.repository }}
-            # opcional: ${{ secrets.DOCKERHUB_USERNAME }}/autonomousworld-vscode
+          # Define tags for different scenarios
           tags: |
             type=ref,event=branch,enable=${{ github.ref == 'refs/heads/main' }}
             type=raw,value=edge,enable=${{ github.ref == 'refs/heads/main' }}
