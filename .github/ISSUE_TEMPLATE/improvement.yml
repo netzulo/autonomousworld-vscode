@@ -1,0 +1,32 @@
+name: "🧹 Improvement / Refactor"
+description: Non-functional improvement or refactor
+title: "chore/refactor: <area>"
+labels: ["refactor", "chore"]
+assignees: []
+body:
+  - type: input
+    id: area
+    attributes:
+      label: Area
+      placeholder: "e.g., scripts, Dockerfile, CI/CD, docs"
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this change beneficial?
+  - type: textarea
+    id: plan
+    attributes:
+      label: Change plan
+      description: Tasks/steps to implement
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+  - type: checkboxes
+    id: risk
+    attributes:
+      label: Risks
+      options:
+        - label: Build cache changes
+        - label: Base image / version changes
+        - label: Requires docs update

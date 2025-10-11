@@ -1,0 +1,32 @@
+name: "🛡️ Security report"
+description: Report a potential security issue
+title: "sec: <short summary>"
+labels: ["security"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ Prefer private Security Advisories or the email in SECURITY.md for sensitive reports.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Brief description of the vulnerability
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Technical details / PoC
+      description: Steps, preconditions, impact; include PoC if possible
+      render: shell
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Suggested mitigation
+  - type: input
+    id: affected
+    attributes:
+      label: Affected versions/tags
+      placeholder: "edge, v1.2.3"

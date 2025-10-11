@@ -7,6 +7,11 @@ FROM ubuntu:22.04
 
 LABEL maintainer="autonomousworld"
 LABEL name="autonomousworld-vscode"
+LABEL org.opencontainers.image.title="autonomousworld-vscode" \
+      org.opencontainers.image.description="Autonomous dev env (code-server + MCPs) ready to use" \
+      org.opencontainers.image.source="https://github.com/netzulo/autonomousworld-vscode" \
+      org.opencontainers.image.url="https://github.com/netzulo/autonomousworld-vscode" \
+      org.opencontainers.image.licenses="MIT"
 
 SHELL ["/bin/bash", "-c"]
 
