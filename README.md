@@ -1,4 +1,4 @@
-# 🛠️ Getting Started · Autonomous Dev Environment (`autonomousworld-vscode`)
+# 🛠️ Autonomous Dev Environment
 
 This repository defines the **autonomous development Docker environment** used by AI agents in the Autonomous World system.  
 The goal is to provide a highly configurable, reproducible, and observable dev container that includes:
