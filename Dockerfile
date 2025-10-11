@@ -6,7 +6,7 @@
 FROM ubuntu:22.04
 
 LABEL maintainer="autonomousworld"
-LABEL name="ephemereal-node"
+LABEL name="autonomousworld-vscode"
 
 SHELL ["/bin/bash", "-c"]
 
