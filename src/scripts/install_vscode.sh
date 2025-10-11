@@ -25,7 +25,7 @@ if [ -f "${VSCODE_DIR}/vscode/settings.json" ]; then
   mkdir -p /root/.local/share/code-server/User
   cp "${VSCODE_DIR}/vscode/settings.json" /root/.local/share/code-server/User/settings.json
 else
-  echo "⏭️ ${VSCODE_DIR}/vscode/settings.json not found (skipping)"
+  echo "${VSCODE_DIR}/vscode/settings.json not found (skipping)"
 fi
 
 # 4) Instalar extensiones desde VSIX (si existen)
@@ -45,7 +45,7 @@ code-server --list-extensions || true
 
 # 5) mcp.json (configuración de MCP en scope User)
 if [ -f "${VSCODE_DIR}/vscode/mcp.json" ]; then
-  echo "🔧 Installing MCP user config"
+  echo "Installing MCP user config"
   mkdir -p /root/.local/share/code-server/User
   cp "${VSCODE_DIR}/vscode/mcp.json" /root/.local/share/code-server/User/mcp.json
 else
@@ -56,5 +56,7 @@ fi
 ./opt/scripts/install_mcp_git.sh
 # 5.2 Extras for MCP: PDF Action Inspector
 ./opt/scripts/install_mcp_pdf_inspector.sh
+# 5.3 Extras for MCP: Github MCP server
+./opt/scripts/install_mcp_github.sh
 
 echo "code-server setup complete"
