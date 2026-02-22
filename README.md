@@ -1,5 +1,11 @@
 # 🛠️ Autonomous Dev Environment
 
+![CI](https://github.com/netzulo/autonomousworld-vscode/actions/workflows/ci.yml/badge.svg)
+![Publish](https://github.com/netzulo/autonomousworld-vscode/actions/workflows/docker-publish.yml/badge.svg)
+![Release](https://github.com/netzulo/autonomousworld-vscode/actions/workflows/release-please.yml/badge.svg)
+![Security](https://github.com/netzulo/autonomousworld-vscode/actions/workflows/security.yml/badge.svg)
+![GHCR](https://img.shields.io/badge/ghcr-available-brightgreen)
+
 This repository defines the **autonomous development Docker environment** used by AI agents in the Autonomous World system.  
 The goal is to provide a highly configurable, reproducible, and observable dev container that includes:
 
