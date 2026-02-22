@@ -22,11 +22,16 @@ jobs:
       matrix:
         language: [ 'javascript', 'python' ]
     steps:
+<<<<<<< dependabot/github_actions/github/codeql-action-4
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v4
+=======
       - uses: actions/checkout@v6
       - uses: github/codeql-action/init@v3
+>>>>>>> main
         with:
           languages: ${{ matrix.language }}
-      - uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/analyze@v4
 
   trivy-image:
     name: Trivy scan (image)
@@ -58,6 +63,6 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Upload Trivy SARIF
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: trivy-image.sarif
