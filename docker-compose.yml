@@ -3,6 +3,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        COPILOT_CLI_ENABLED: "${COPILOT_CLI_ENABLED:-false}"
+        COPILOT_CLI_MCP_SEED: "${COPILOT_CLI_MCP_SEED:-false}"
+        COPILOT_CLI_INSTALL_METHOD: "${COPILOT_CLI_INSTALL_METHOD:-auto}"
+        COPILOT_CLI_VERSION: "${COPILOT_CLI_VERSION:-}"
+        COPILOT_CLI_PREFIX: "${COPILOT_CLI_PREFIX:-/usr/local}"
+        BROWSERS_ENABLED: "${BROWSERS_ENABLED:-false}"
     container_name: aw-dev-node
     ports:
       - "${VSCODE_PORT:-8443}:${VSCODE_PORT:-8443}"
@@ -18,6 +25,12 @@ services:
       OPENAI_API_KEY: "${OPENAI_API_KEY}"
       OPENAI_MODEL: "${OPENAI_MODEL}"
       GITLAB_PERSONAL_ACCESS_TOKEN: "${GITLAB_PERSONAL_ACCESS_TOKEN}"
+      COPILOT_CLI_ENABLED: "${COPILOT_CLI_ENABLED:-false}"
+      COPILOT_CLI_MCP_SEED: "${COPILOT_CLI_MCP_SEED:-false}"
+      COPILOT_CLI_INSTALL_METHOD: "${COPILOT_CLI_INSTALL_METHOD:-auto}"
+      COPILOT_CLI_VERSION: "${COPILOT_CLI_VERSION:-}"
+      COPILOT_CLI_PREFIX: "${COPILOT_CLI_PREFIX:-/usr/local}"
+      BROWSERS_ENABLED: "${BROWSERS_ENABLED:-false}"
     volumes:
       - ./src/workspace:/workspace
     tty: true

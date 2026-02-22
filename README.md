@@ -133,6 +133,61 @@ Each script should support:
 
 ---
 
+## 🤖 Copilot CLI + MCP (opt-in)
+
+This image can optionally install GitHub Copilot CLI and seed a CLI-level MCP config for WebdriverIO MCP.
+
+### Enable during build
+
+Use build args (recommended) to enable the install and seed the MCP config:
+
+```bash
+COPILOT_CLI_ENABLED=true \
+COPILOT_CLI_MCP_SEED=true \
+docker compose -f docker-compose.yml up --build
+```
+
+Optional build flags:
+
+- `COPILOT_CLI_INSTALL_METHOD` = `auto` | `script` | `npm`
+- `COPILOT_CLI_VERSION` = specific version (optional)
+- `COPILOT_CLI_PREFIX` = install prefix (default `/usr/local`)
+- `BROWSERS_ENABLED=true` to install Chromium for MCP browser automation
+
+### MCP seed template
+
+The template lives at [src/copilot/mcp-config.json](src/copilot/mcp-config.json) and is copied to:
+
+```
+~/.copilot/mcp-config.json
+```
+
+### Authenticate and verify
+
+Inside the container:
+
+```bash
+copilot --version
+copilot
+```
+
+If prompted, run `/login` and follow the instructions. You can also set `GH_TOKEN` or `GITHUB_TOKEN`.
+
+### Minimal demo (headless browser + screenshot)
+
+With MCP seeded and browsers enabled, run a simple flow from Copilot CLI:
+
+1. Start a session
+2. Navigate to a URL
+3. Take a screenshot
+4. Close the session
+
+Example prompt to Copilot CLI:
+
+"Use wdio-mcp to open a headless browser, navigate to https://example.com, take a screenshot at /workspace/example.png, then close the session."
+
+---
+
 ---
 
 ## 📄 Roadmap

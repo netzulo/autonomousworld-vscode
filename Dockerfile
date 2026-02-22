@@ -16,6 +16,16 @@ LABEL org.opencontainers.image.title="autonomousworld-vscode" \
 SHELL ["/bin/bash", "-c"]
 
 # --------------------------------------------
+# Build args (opt-in toggles)
+# --------------------------------------------
+ARG COPILOT_CLI_ENABLED=false
+ARG COPILOT_CLI_MCP_SEED=false
+ARG COPILOT_CLI_INSTALL_METHOD=auto
+ARG COPILOT_CLI_VERSION=
+ARG COPILOT_CLI_PREFIX=/usr/local
+ARG BROWSERS_ENABLED=false
+
+# --------------------------------------------
 # ENV Defaults (override with Docker Compose or CLI)
 # --------------------------------------------
 ENV LANGUAGES=node,python,java \
@@ -28,7 +38,13 @@ ENV LANGUAGES=node,python,java \
     VSCODE_PASSWORD=agent \
     OPENAI_API_KEY=your_openai_api_key_here \
     OPENAI_MODEL=gpt-4 \
-    GITLAB_PERSONAL_ACCESS_TOKEN=your_gitlab_token_here
+    GITLAB_PERSONAL_ACCESS_TOKEN=your_gitlab_token_here \
+    COPILOT_CLI_ENABLED=${COPILOT_CLI_ENABLED} \
+    COPILOT_CLI_MCP_SEED=${COPILOT_CLI_MCP_SEED} \
+    COPILOT_CLI_INSTALL_METHOD=${COPILOT_CLI_INSTALL_METHOD} \
+    COPILOT_CLI_VERSION=${COPILOT_CLI_VERSION} \
+    COPILOT_CLI_PREFIX=${COPILOT_CLI_PREFIX} \
+    BROWSERS_ENABLED=${BROWSERS_ENABLED}
 
 # --------------------------------------------
 # Locale setup
@@ -72,6 +88,11 @@ COPY src/scripts /opt/scripts/
 RUN chmod +x /opt/scripts/*.sh || true
 
 # --------------------------------------------
+# Copilot CLI MCP templates
+# --------------------------------------------
+COPY src/copilot /opt/copilot/
+
+# --------------------------------------------
 # Install languages
 # --------------------------------------------
 RUN for lang in $(echo $LANGUAGES | tr "," "\n"); do \
@@ -79,6 +100,12 @@ RUN for lang in $(echo $LANGUAGES | tr "," "\n"); do \
 done
 # Source bashrc to load asdf and installed languages
 RUN . ~/.bashrc
+
+# --------------------------------------------
+# Optional: browsers + Copilot CLI
+# --------------------------------------------
+RUN bash /opt/scripts/install_browsers.sh
+RUN bash /opt/scripts/install_copilot_cli.sh
 
 # --------------------------------------------
 # VS Code + extensions + MCPs + settings
