@@ -3,7 +3,7 @@
     "wdio-mcp": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@wdio/mcp"],
+      "args": ["-y", "@wdio/mcp@0.1.0"],
       "tools": [
         "start_browser",
         "navigate",
