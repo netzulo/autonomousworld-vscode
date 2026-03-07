@@ -152,7 +152,7 @@ Optional build flags:
 - `COPILOT_CLI_INSTALL_METHOD` = `auto` | `script` | `npm`
 - `COPILOT_CLI_VERSION` = specific version (optional)
 - `COPILOT_CLI_PREFIX` = install prefix (default `/usr/local`)
-- `BROWSERS_ENABLED=true` to install Chromium for MCP browser automation
+- `BROWSERS_ENABLED=true` to install Google Chrome (`google-chrome-stable`) for MCP browser automation
 
 ### MCP seed template
 
