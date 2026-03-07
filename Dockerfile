@@ -18,17 +18,21 @@ SHELL ["/bin/bash", "-c"]
 # --------------------------------------------
 # ENV Defaults (override with Docker Compose or CLI)
 # --------------------------------------------
-ENV LANGUAGES=node,python,java \
+ENV LANGUAGES=node,python,java,go \
     NODE_VERSION=20.11.1 \
     ASDF_VERSION=v0.14.0 \
     PYTHON_VERSION=3.12.1 \
     JAVA_VERSION=temurin-17.0.10+7 \
+    GO_VERSION=1.22.6 \
     VSCODE_DIR=/opt/vscode \
     VSCODE_PORT=8443 \
     VSCODE_PASSWORD=agent \
     OPENAI_API_KEY=your_openai_api_key_here \
     OPENAI_MODEL=gpt-4 \
-    GITLAB_PERSONAL_ACCESS_TOKEN=your_gitlab_token_here
+    GITLAB_PERSONAL_ACCESS_TOKEN=your_gitlab_token_here \
+    GITHUB_MCP_VERSION=v0.18.0 \
+    GITHUB_PERSONAL_ACCESS_TOKEN=your_github_token_here \
+    GITHUB_TOOLSETS=repos,issues,pull_requests,actions,code_security
 
 # --------------------------------------------
 # Locale setup

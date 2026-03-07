@@ -14,5 +14,10 @@
   "files.autoSave": "off",
 
   // Avoid trust prompts in ephemeral containers
-  "security.workspace.trust.enabled": false
+  "security.workspace.trust.enabled": false,
+
+  // Pre-Enablement of Copilot
+  "chat.agent.enabled": true,
+  "chat.mcp.access": "all",
+  "chat.mcp.discovery.enabled": {}
 }

@@ -1,21 +1,21 @@
 {
 	"servers": {
 		"memory": {
-    	  "command": "npx",
-    	  "args": [
-    	    "-y",
-    	    "@modelcontextprotocol/server-memory"
-    	  ],
-		  "envFile": "${input:envFile}"
-    	},
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-memory"
+			],
+			"envFile": "${input:envFile}"
+		},
 		"sequential-thinking": {
-    	  "command": "npx",
-    	  "args": [
-    	    "-y",
-    	    "@modelcontextprotocol/server-sequential-thinking"
-    	  ],
-		  "envFile": "${input:envFile}"
-    	},
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-sequential-thinking"
+			],
+			"envFile": "${input:envFile}"
+		},
 		"filesystem": {
 			"command": "npx",
 			"args": [
@@ -34,20 +34,28 @@
 				"--repository",
 				"/workspace"
 			]
-  		},
+		},
 		"gitlab": {
-    		"command": "npx",
-    		"args": [
-    		  "-y",
-    		  "@modelcontextprotocol/server-gitlab"
-    		],
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-gitlab"
+			],
 			"envFile": "${input:envFile}",
-    		"type": "stdio"
-    	},
+			"type": "stdio"
+		},
+		"github": {
+			"command": "/usr/local/bin/github-mcp-server",
+			"args": [
+				"stdio"
+			],
+			"type": "stdio",
+			"envFile": "${input:envFile}"
+		},
 		"pdf-action-inspector": {
-    		"command": "pdf-action-inspector",
-    		"type": "stdio"
-    	}
+			"command": "pdf-action-inspector",
+			"type": "stdio"
+		}
 	},
 	"inputs": [
 		{
