@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "wdio-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@wdio/mcp@0.1.0"],
+      "tools": [
+        "start_browser",
+        "navigate",
+        "get_visible_elements",
+        "click_element",
+        "set_value",
+        "scroll",
+        "take_screenshot",
+        "close_session"
+      ]
+    }
+  }
+}
