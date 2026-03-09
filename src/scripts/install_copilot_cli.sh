@@ -8,9 +8,10 @@ echo "Installing GitHub Copilot CLI (opt-in)"
 : "${COPILOT_CLI_INSTALL_URL:=https://gh.io/copilot-install}"
 : "${COPILOT_CLI_PREFIX:=/usr/local}"
 : "${COPILOT_CLI_VERSION:=}"
-: "${COPILOT_CLI_MCP_SEED:=false}"
+: "${COPILOT_CLI_MCP_ENABLED:=false}"
 : "${COPILOT_CLI_MCP_CONFIG_TEMPLATE:=/opt/copilot/mcp-config.json}"
 : "${COPILOT_CLI_MCP_CONFIG_PATH:=/root/.copilot/mcp-config.json}"
+: "${COPILOT_GITHUB_TOKEN:=your_github_personal_access_token_here   }"
 
 if [[ "${COPILOT_CLI_ENABLED}" != "true" ]]; then
   echo "COPILOT_CLI_ENABLED is not true; skipping Copilot CLI installation."
@@ -53,7 +54,14 @@ else
   echo "Copilot CLI installation finished, but 'copilot' is not on PATH." >&2
 fi
 
-if [[ "${COPILOT_CLI_MCP_SEED}" == "true" ]]; then
+if [[ -n "${COPILOT_GITHUB_TOKEN}" && "${COPILOT_GITHUB_TOKEN}" != "your_github_personal_access_token_here" ]]; then
+  echo "Logging into Copilot CLI with provided GitHub token to cache credentials..."
+  echo "${COPILOT_GITHUB_TOKEN}" | copilot auth login --with-token || echo "Copilot CLI login failed; please check your token and login manually." >&2
+else
+  echo "COPILOT_GITHUB_TOKEN is not set or is the default placeholder; skipping Copilot CLI login."
+fi
+
+if [[ "${COPILOT_CLI_MCP_ENABLED}" == "true" ]]; then
   if [[ -f "${COPILOT_CLI_MCP_CONFIG_TEMPLATE}" ]]; then
     echo "Seeding Copilot CLI MCP config..."
     mkdir -p "$(dirname "${COPILOT_CLI_MCP_CONFIG_PATH}")"
@@ -62,5 +70,5 @@ if [[ "${COPILOT_CLI_MCP_SEED}" == "true" ]]; then
     echo "MCP config template not found at ${COPILOT_CLI_MCP_CONFIG_TEMPLATE}; skipping seed." >&2
   fi
 else
-  echo "COPILOT_CLI_MCP_SEED is not true; skipping MCP config seed."
+  echo "COPILOT_CLI_MCP_ENABLED is not true; skipping MCP config seed."
 fi

@@ -143,7 +143,7 @@ Use build args (recommended) to enable the install and seed the MCP config:
 
 ```bash
 COPILOT_CLI_ENABLED=true \
-COPILOT_CLI_MCP_SEED=true \
+COPILOT_CLI_MCP_ENABLED=true \
 docker compose -f docker-compose.yml up --build
 ```
 

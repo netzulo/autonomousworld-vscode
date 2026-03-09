@@ -15,15 +15,6 @@ LABEL org.opencontainers.image.title="autonomousworld-vscode" \
 
 SHELL ["/bin/bash", "-c"]
 
-# --------------------------------------------
-# Build args (opt-in toggles)
-# --------------------------------------------
-ARG COPILOT_CLI_ENABLED=false
-ARG COPILOT_CLI_MCP_SEED=false
-ARG COPILOT_CLI_INSTALL_METHOD=auto
-ARG COPILOT_CLI_VERSION=
-ARG COPILOT_CLI_PREFIX=/usr/local
-ARG BROWSERS_ENABLED=false
 
 # --------------------------------------------
 # ENV Defaults (override with Docker Compose or CLI)
@@ -39,12 +30,13 @@ ENV LANGUAGES=node,python,java \
     OPENAI_API_KEY=your_openai_api_key_here \
     OPENAI_MODEL=gpt-4 \
     GITLAB_PERSONAL_ACCESS_TOKEN=your_gitlab_token_here \
-    COPILOT_CLI_ENABLED=${COPILOT_CLI_ENABLED} \
-    COPILOT_CLI_MCP_SEED=${COPILOT_CLI_MCP_SEED} \
-    COPILOT_CLI_INSTALL_METHOD=${COPILOT_CLI_INSTALL_METHOD} \
-    COPILOT_CLI_VERSION=${COPILOT_CLI_VERSION} \
-    COPILOT_CLI_PREFIX=${COPILOT_CLI_PREFIX} \
-    BROWSERS_ENABLED=${BROWSERS_ENABLED}
+    COPILOT_CLI_ENABLED=false \
+    COPILOT_CLI_MCP_ENABLED=false \
+    COPILOT_CLI_INSTALL_METHOD=auto \
+    COPILOT_CLI_VERSION= \
+    COPILOT_CLI_PREFIX=/usr/local \
+    COPILOT_GITHUB_TOKEN=${COPILOT_GITHUB_TOKEN} \
+    BROWSERS_ENABLED=false
 
 # --------------------------------------------
 # Locale setup
