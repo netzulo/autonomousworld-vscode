@@ -3,7 +3,7 @@
 # Base image: Ubuntu 22.04
 # --------------------------------------------------
 
-FROM ubuntu:22.04
+FROM ubuntu:26.04
 
 LABEL maintainer="autonomousworld"
 LABEL name="autonomousworld-vscode"
